@@ -1,4 +1,3 @@
-import "./App.css";
 import { Block } from "./Block";
 import "./index.scss";
 
