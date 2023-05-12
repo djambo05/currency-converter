@@ -7,9 +7,12 @@ function App() {
   const [toCurrency, setToCurrency] = useState("USD");
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(0);
-  const [rates, setRates] = useState({});
+  const rates = { RUB: 70, EUR: 80, GBP: 100, USD: 1 };
 
   const onChangeFromPrice = (value) => {
+    const price = value / rates[fromCurrency];
+    const result = price * rates[toCurrency];
+    setToPrice(result);
     setFromPrice(value);
   };
 
