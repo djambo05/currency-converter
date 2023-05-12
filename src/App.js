@@ -7,7 +7,7 @@ function App() {
   const [toCurrency, setToCurrency] = useState("USD");
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(0);
-  const rates = { RUB: 70, EUR: 80, GBP: 100, USD: 1 };
+  const rates = { RUB: 60, EUR: 0.98, GBP: 0.82, USD: 1 };
 
   const onChangeFromPrice = (value) => {
     const price = value / rates[fromCurrency];
@@ -17,21 +17,19 @@ function App() {
   };
 
   const onChangeToPrice = (value) => {
+    const result = (rates[fromCurrency] / rates[toCurrency]) * value;
+    setFromPrice(result);
     setToPrice(value);
   };
 
-  // useEffect(() => {
-  //   fetch("https://cdn.cur.su/api/latest.json")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setRates(json.rates);
-  //       console.log(json.rates);
-  //     })
-  //     .catch((err) => {
-  //       console.warn(err);
-  //       alert("Не удалось получить информацию");
-  //     });
-  // });
+  useEffect(() => {
+    onChangeFromPrice(fromPrice);
+  }, [fromCurrency, fromPrice]);
+
+  useEffect(() => {
+    onChangeToPrice(toPrice);
+  }, [toCurrency, toPrice]);
+
   return (
     <div className="App">
       <Block
