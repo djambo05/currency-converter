@@ -6,7 +6,7 @@ function App() {
   const [fromCurrency, setFromCurrency] = useState("RUB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [fromPrice, setFromPrice] = useState(0);
-  const [toPrice, setToPrice] = useState(0);
+  const [toPrice, setToPrice] = useState(1);
   const rates = { RUB: 60, EUR: 0.98, GBP: 0.82, USD: 1 };
 
   const onChangeFromPrice = (value) => {
@@ -24,11 +24,11 @@ function App() {
 
   useEffect(() => {
     onChangeFromPrice(fromPrice);
-  }, [fromCurrency, fromPrice]);
+  }, [fromCurrency]);
 
   useEffect(() => {
     onChangeToPrice(toPrice);
-  }, [toCurrency, toPrice]);
+  }, [toCurrency]);
 
   return (
     <div className="App">
