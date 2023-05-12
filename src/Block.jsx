@@ -5,7 +5,11 @@ export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => {
       <ul className="currencies">
         {defaultCurrencies.map((cur) => {
           return (
-            <li key={cur} className={currency === cur ? "active" : ""}>
+            <li
+              key={cur}
+              onClick={() => onChangeCurrency(cur)}
+              className={currency === cur ? "active" : ""}
+            >
               {cur}
             </li>
           );
