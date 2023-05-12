@@ -17,7 +17,12 @@ export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => {
           </svg>
         </li>
       </ul>
-      <input type="number" placeholder={0}></input>
+      <input
+        onChange={(e) => onChangeValue(e.target.value)}
+        value={value}
+        type="number"
+        placeholder={0}
+      ></input>
     </div>
   );
 };
